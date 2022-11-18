@@ -9,10 +9,11 @@
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+        gtag("js", new Date());
 
-        gtag('config', 'G-F6S751BVJ5');
+        gtag("config", "G-F6S751BVJ5");
     </script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
     <!-- <meta charset="utf-8"> -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -21,366 +22,396 @@
     <meta name="author" content="">
     <link rel="icon" href="images/favicon.ico">
 
-    <title>eDiff-I: Text-to-Image Diffusion Models with Ensemble of Expert Denoisers</title>
+    <title>Magic3D: High-Resolution Text-to-3D Content Creation</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,600,700,800">
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/gh/jablonczay/code-box-copy/code-box-copy/css/code-box-copy.min.css"
         rel="stylesheet" />
 
-    <style>
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            padding-bottom: 50px;
-        }
-
-        hr {
-            background: #80808083;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: 25% 25% 25% 25%;
-            padding: 2px;
-        }
-
-        .grid-container-video {
-            display: grid;
-            grid-template-columns: 100%;
-            padding: 2px;
-        }
-
-        .grid-item {
-            padding: 2px;
-            font-size: 30px;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-
-        /*input[type="checkbox"] {*/
-        /*    display: none;*/
-        /*}*/
-        img {
-            -webkit-filter: grayscale(0%);
-            filter: grayscale(0%);
-        }
-
-        label {
-            border: 1px solid #000;
-            padding: 0;
-            display: inline-block;
-            position: relative;
-            margin: 0;
-            cursor: pointer;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        .embed-responsive-2by1 {
-            padding-bottom: 50%;
-        }
-
-        .embed-responsive-4by1 {
-            padding-bottom: 25%;
-        }
-
-        .embed-responsive-6by1 {
-            padding-bottom: 16.67%;
-        }
-
-        .embed-responsive-8by1 {
-            padding-bottom: 12.50%;
-        }
-
-        .embed-responsive-teaser {
-            padding-bottom: 29%;
-        }
-
-        .float-button {
-            position: fixed;
-            right: 1%;
-            z-index: 9999;
-        }
-
-        .vert {
-            transform-origin: 50% 50%;
-            transform: rotate(180deg);
-            writing-mode: vertical-rl;
-            margin: 0;
-        }
-
-        .caption {
-            font-size: 0.9rem;
-            margin-top: 0;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        /*.row {*/
-        /*    display: grid;*/
-        /*    grid-auto-flow: row;*/
-        /*    gap: 5%;*/
-        /*}*/
-
-        .carousel .carousel-indicators li {
-            width: 10px;
-            height: 10px;
-            border-radius: 100%;
-        }
-
-        .carousel .carousel-indicators {
-            visibility: hidden;
-        }
-
-        .carousel:hover .carousel-indicators {
-            visibility: visible;
-        }
-
-        .w-85 {
-            width: 85% !important;
-        }
-
-        /*#videoGallery {
-            margin-left: 50px;
-            margin-right: 50px;
-        }*/
-        .carousel-control-prev {
-            width: 7%;
-            filter: invert(100%);
-        }
-
-        .carousel-control-next {
-            width: 7%;
-            filter: invert(100%);
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="js/video_comparison.js"></script>
 </head>
 
 <body>
     <main role="main">
 
-        <section class="jumbotron text-center" style="padding: 2%; padding-bottom: 1%; background-color: #e6e9ec;">
-            <div class="container">
-                <h2 class="jumbotron-heading">Magic3D: High-Resolution Text-to-3D Content Creation
+        <!-- <section class="jumbotron text-center" style="padding: 2%; padding-bottom: 1%; background-color: #e6e9ec;"> -->
+        <section class="jumbotron text-center" id="banner">
+            <div class="container" id="title">
+                <h2 class="jumbotron-heading"><span id="name">Magic3D</span>: High-Resolution Text-to-3D Content Creation
                 </h2>
             </div>
 
             <div class="container" style="max-width: 840px;">
                 <div class="row">
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center"
-                                href="https://chenhsuanlin.bitbucket.io/" target="_blank">Chen-Hsuan Lin*<span
-                                    style="color: #76b900;"></span></a></h5>
-                    </div>
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center"
-                                href="https://www.cs.toronto.edu/~jungao/" target="_blank">Jun Gao*<span
-                                    style="color: #76b900;"></span></a></h5>
-                    </div>
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center" href="http://lumingtang.info"
-                                target="_blank">Luming Tang*<span style="color: #76b900;"></span></a></h5>
-                    </div>
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center" href="https://tovacinni.github.io"
-                                target="_blank">Towaki Takikawa*<span style="color: #76b900;"></span></a></h5>
-                    </div>
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center" href="https://www.cs.utoronto.ca/~xiaohui/"
-                                target="_blank">Xiaohui Zeng*<span style="color: #76b900;"></span></a></h5>
-                    </div>
+                    <div class="col-md author"><a href="https://chenhsuanlin.bitbucket.io/" target="_blank">Chen-Hsuan Lin</a>*</div>
+                    <div class="col-md author"><a href="https://www.cs.toronto.edu/~jungao/" target="_blank">Jun Gao</a>*</div>
+                    <div class="col-md author"><a href="http://lumingtang.info" target="_blank">Luming Tang</a>*</div>
+                    <div class="col-md author"><a href="https://tovacinni.github.io" target="_blank">Towaki Takikawa</a>*</div>
+                    <div class="col-md author"><a href="https://www.cs.utoronto.ca/~xiaohui/" target="_blank">Xiaohui Zeng</a>*</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center" href="https://xunhuang.me"
-                                target="_blank">Xun Huang<span style="color: #76b900;"></span></a></h5>
-                    </div>
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center"
-                                href="https://karstenkreis.github.io/" target="_blank">Karsten Kreis<span
-                                    style="color: #76b900;"></span></a></h5>
-                    </div>
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center"
-                                href="https://www.cs.utoronto.ca/~fidler/" target="_blank">Sanja Fidler<span
-                                    style="color: #76b900;"></span></a></h5>
-                    </div>
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center" href="http://mingyuliu.net/"
-                                target="_blank">Ming-Yu Liu<span style="color: #76b900;"></span></a></h5>
-                    </div>
-                    <div class="col-md">
-                        <h6 class="text-center" style="margin: 0;"><a class="text-center"
-                                href="https://tsungyilin.info" target="_blank">Tsung-Yi Lin<span
-                                    style="color: #76b900;"></span></a></h5>
-                    </div>
+                    <div class="col-md author"><a href="https://xunhuang.me" target="_blank">Xun Huang</a></div>
+                    <div class="col-md author"><a href="https://karstenkreis.github.io/" target="_blank">Karsten Kreis</a></div>
+                    <div class="col-md author"><a href="https://www.cs.utoronto.ca/~fidler/" target="_blank">Sanja Fidler</a><sup>†</sup></div>
+                    <div class="col-md author"><a href="http://mingyuliu.net/" target="_blank">Ming-Yu Liu</a><sup>†</sup></div>
+                    <div class="col-md author"><a href="https://tsungyilin.info" target="_blank">Tsung-Yi Lin</a></div>
                 </div>
 
                 <div class="row" style="margin-top:0.5rem; margin-left: auto; margin-right: auto;">
                     <div class="col-md">
-                        <h5>NVIDIA Corporation</h5>
-                        <h9>*Equal contritions</h9>
+                        <h9>*<sup>†</sup> : equal contributions</h9>
+                        <div id="affiliation">NVIDIA Corporation</div>
                     </div>
                 </div>
             </div>
 
             <div class="buttons">
-                <a href="" target="_blank" class="btn btn-primary my-2">Paper
-                    (arxiv)</a>
+                <a href="" target="_blank" class="btn btn-primary my-2">Paper (arXiv)</a>
                 <a href="" target="_blank" class="btn btn-primary my-2">Video</a>
             </div>
 
-            <div class="container" style="max-width: 900px;">
-                <div class="row">
-                    <div class="col-md">
-                        <h5>TL;DR: Magic3D is a new text-to-3D content creation tool that
-                            creates 3D mesh models with unprecedented quality.</h5>
-                    </div>
+            <div class="container">
+                <div class="row" id="pitch">
+                    <p style="text-align: center;">
+                        Magic3D is a new text-to-3D content creation tool that
+                        creates 3D mesh models with unprecedented quality.
+                        <!-- We introduce Magic3D, which creates high resolution 3D mesh models from a text prompt. -->
+                        Together with image conditioning techniques as well as
+                        prompt-based editing approach, we provide users with new ways to control 
+                        3D synthesis, opening up new avenues to various creative applications.
+                    </p>
                 </div>
-                <div class="row">
-                    <div class="col-md">
-                        <p>
-                            We introduce Magic3D, which creates a high
-                            quality 3D mesh model in 40 minutes, while achieving higher resolution.
-                            Together with the image-conditioned generation capabilities, we pro-
-                            vide users with new ways to control 3D synthesis, opening
-                            up new avenues to various creative applications.
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="column" style="margin: auto;width: 33%;">
-                        <img id="teaser_portal" src="" style="margin: 8px;width: 100%;">
-                    </div>
-                    <div class="column" style="margin: auto;width: 33%;">
-                        <img id="teaser_cat" src="" style="margin: 8px;width: 100%;">
-                    </div>
-                    <div class="column" style="margin: auto;width: 33%;">
-                        <img id="teaser_landscape" src="" style="margin: 8px;width: 100%;">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md" style="margin: auto;width: 33%;">
-                        <p class="caption text-center"><i>A highly detailed digital painting of a portal in a mystic
-                                forest with many beautiful trees. A person is standing in front of the portal</i></p>
-                    </div>
-                    <div class="col-md" style="margin: auto;width: 33%;">
-                        <p class="caption text-center"><i>A highly detailed zoomed-in digital painting of a cat dressed
-                                as a witch wearing a wizard hat in a haunted house, artstation</i></p>
-                    </div>
-                    <div class="col-md" style="margin: auto;width: 33%;">
-                        <p class="caption text-center"><i>An image of a beautiful landscape of an ocean. There is a huge
-                                rock in the middle of the ocean. There is a mountain in the background. Sun is
-                                setting.</i></p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="column" style="margin-right:4px; margin-left:8px; width: 15%">
-                        <img id="teaser" src="images/teaser/animal_scrape.jpeg" style="width: 100%;">
-                        <p>Style Reference</p>
-                        <p class="caption text-center"><i>A photo of a duckling wearing a medieval soldier helmet and
-                                riding a skateboard.</i></p>
-                    </div>
-                    <div class="column" style="margin-left:0px;width: 30%;">
-                        <img id="teaser" src="images/teaser/duck.jpg" style="width: 100%;">
-                    </div>
-
-                    <div class="column" style="margin-left: 20px;width: 50%;">
-                        <div class="row">
-                            <img id="teaser" src="images/paint_with_words/aurora_text.jpg"
-                                style="margin: 2px; width: 48%;">
-                            <img id="teaser" src="images/paint_with_words/aurora_out.jpg"
-                                style="margin: 2px;width: 48%;">
-                        </div>
-                        <div class="col-md" style="margin: auto;width: 100%;">
-                            <p class="caption text-center"><i>A digital painting of a half-frozen lake near mountains
-                                    under a full
-                                    moon and aurora. A boat is in the middle of the lake. Highly detailed.</i></p>
-                        </div>
-                    </div>
-
-                </div>
+            </div>
 
         </section>
     </main>
+    
+    <div class="container" style="padding-top: 50px;">
 
+        <!-- Summary video -->
+        <h5>Video</h5>
+        <div style="text-align: center;">
+            <!-- <iframe width=860 height=484 class="large_video" src="https://www.youtube.com/embed/dCmCZs2Hpi0" frameborder=0></iframe> -->
+            <video width=100% class="large_video" controls><source src="assets/video.mp4" type="video/mp4">X</video>
+        </div>
 
-    <!-- Summary video -->
-    <div class="container" style="max-width: 768px;">
+        <!-- 3D meshes -->
+        <hr>
+        <h5>High-Resolution 3D Meshes</h5>
+        <div class="container">
+            <p>
+                Magic3D can create high-quality 3D textured mesh models from input text prompts.
+                It utilizes a coarse-to-fine strategy that leverages both low- and highresolution diffusion priors for learning the 3D representation of the target content.
+                Magic3D synthesizes 3D content with 8× higher-resolution supervision than DreamFusion while also being 2× faster.
+            </p>
+            <p style="text-align: center; font-size: 90%; line-height: 1.25em;">
+                <b>[...]</b> indicates helper captions added to improve quality, e.g. "A DSLR photo of".<br>
+                Videos are best viewed with Google Chrome.<br>
+                <b>Click on the text prompts to reveal the 3D meshes!</b>
+            </p>
 
-        <div class="grid-container-video" style="width: 90%; margin-left: auto; margin-right: auto">
-            <div class="grid-item">
-                <div>
-                    <h5>Video</h5>
+            <div class="row">
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh1" loop autoplay muted src="assets/main/hstack-320x320/005.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh1Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh1-model" src="assets/selected_glb_files/005.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh2" loop autoplay muted src="assets/main/hstack-320x320/009.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh2Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh2-model" src="assets/selected_glb_files/009.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh3" loop autoplay muted src="assets/main/hstack-320x320/048.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh3Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh3-model" src="assets/selected_glb_files/048.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
             </div>
-            <div class="embed-responsive embed-responsive-16by9" style="margin: 0;">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/WbaVvlgxbl4"
-                    allowfullscreen></iframe>
+            <div class="row">
+                <div class="vid-prompt-3" id="mesh1-text"> A beautiful dress made out of garbage bags, on a mannequin. Studio lighting, high quality, high resolution. </div>
+                <div class="vid-prompt-3" id="mesh2-text"> A blue poison-dart frog sitting on a water lily. </div>
+                <div class="vid-prompt-3" id="mesh3-text"> [...] a car made out of sushi. </div>
+            </div>
+            <div class="row">
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh4" loop autoplay muted src="assets/main/hstack-320x320/034.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh4Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh4-model" src="assets/selected_glb_files/034.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh5" loop autoplay muted src="assets/main/hstack-320x320/115.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh5Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh5-model" src="assets/selected_glb_files/115.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh6" loop autoplay muted src="assets/main/hstack-320x320/130.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh6Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh6-model" src="assets/selected_glb_files/130.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vid-prompt-3" id="mesh4-text"> [...] a bagel filled with cream cheese and lox. </div>
+                <div class="vid-prompt-3" id="mesh5-text"> [...] an ice cream sundae. </div>
+                <div class="vid-prompt-3" id="mesh6-text"> [...] a peacock on a surfboard. </div>
+            </div>
+            <div class="row">
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh7" loop autoplay muted src="assets/main/hstack-320x320/137.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh7Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh7-model" src="assets/selected_glb_files/137.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh8" loop autoplay muted src="assets/main/hstack-320x320/210.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh8Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh8-model" src="assets/selected_glb_files/210.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh9" loop autoplay muted src="assets/main/hstack-320x320/211.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh9Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh9-model" src="assets/selected_glb_files/211.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vid-prompt-3" id="mesh7-text"> [...] a plate piled high with chocolate chip cookies. </div>
+                <div class="vid-prompt-3" id="mesh8-text"> [...] Neuschwanstein Castle, aerial view. </div>
+                <div class="vid-prompt-3" id="mesh9-text"> [...] the Imperial State Crown of England. </div>
+            </div>
+            <div class="row">
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh10" loop autoplay muted src="assets/main/hstack-320x320/212.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh10Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh10-model" src="assets/selected_glb_files/212.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh11" loop autoplay muted src="assets/main/hstack-320x320/276.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh11Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh11-model" src="assets/selected_glb_files/276.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh12" loop autoplay muted src="assets/main/hstack-320x320/279.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh12Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh12-model" src="assets/selected_glb_files/279.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vid-prompt-3" id="mesh10-text"> [...] the leaning tower of Pisa, aerial view. </div>
+                <div class="vid-prompt-3" id="mesh11-text"> A ripe strawberry. </div>
+                <div class="vid-prompt-3" id="mesh12-text"> A silver platter piled high with fruits. </div>
+            </div>
+            <div class="row">
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh13" loop autoplay muted src="assets/main/hstack-320x320/387.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh13Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh13-model" src="assets/selected_glb_files/387.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh14" loop autoplay muted src="assets/main/hstack-320x320/400.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh14Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh14-model" src="assets/selected_glb_files/400.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+                <div class="column-3">
+                    <div class="video-compare-container">
+                        <video class="video" id="mesh15" loop autoplay muted src="assets/main/hstack-320x320/405.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="mesh15Merge"></canvas>
+                    </div>
+                    <model-viewer id="mesh15-model" src="assets/selected_glb_files/405.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vid-prompt-3" id="mesh13-text"> [...] a silver candelabra sitting on a red velvet tablecloth, only one candle is lit. </div>
+                <div class="vid-prompt-3" id="mesh14-text"> [...] Sydney opera house, aerial view. </div>
+                <div class="vid-prompt-3" id="mesh15-text"> Michelangelo style statue of an astronaut. </div>
             </div>
         </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <hr style="max-width: 768px;">
-                <h5 class="text-center">Method</h5>
-                <p>
-
-                    We utilize a two-stage coarse-to-fine optimization framework for 
-                    fast and high quality text-to-3D content creation. In the first
-                    stage, we obtain a coarse model using a low-resolution dif-
-                    fusion prior and accelerate this with a hash grid and sparse
-                    acceleration structure. In the second stage, we use a textured
-                    mesh model initialized from the coarse neural representation,
-                    allowing optimization with an efficient differentiable
-                    renderer interacting with a high-resolution latent diffusion
-                    model.
-
-                </p>
-                <div class="row justify-content-center">
-                    <img src="" style="height: 500px;margin-bottom: 8px;">
+        <!-- Prompt-based Edit -->
+        <hr>
+        <h5>Prompt-based Editing</h5>
+        <div class="container">
+            <p>
+                Given a coarse model generated with a base text prompt, we can modify parts of the text in the prompt, and then fine-tune the NeRF and 3D mesh models to obtain an edited high-resolution 3D mesh.
+            </p>
+            <div class="row">
+                <div class="column-4" style="width: 21%;">
+                    <video class="vid-rgb all-center" id="squirrel-in" loop muted autoplay style="width: 70%; margin: auto;"> <source src="assets/prompt-based/squirrel-rgb.mp4" type="video/mp4"> </video>
                 </div>
+                <div class="column-4" style="width: 4%;">
+                    <img class="all-center" src="images/arrow.png" style="width: 100%;">
+                </div>
+                <div class="column-4">
+                    <div class="video-compare-container">
+                        <video class="video" id="squirrel1" loop autoplay muted src="assets/prompt-based/squirrel-256x256-a/bunny-scooter_hstack.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="squirrel1Merge"></canvas>
+                    </div>
+                </div>
+                <div class="column-4">
+                    <div class="video-compare-container">
+                        <video class="video" id="squirrel2" loop autoplay muted src="assets/prompt-based/squirrel-256x256-a/fairy-bike_hstack.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="squirrel2Merge"></canvas>
+                    </div>
+                </div>
+                <div class="column-4">
+                    <div class="video-compare-container">
+                        <video class="video" id="squirrel3" loop autoplay muted src="assets/prompt-based/squirrel-256x256-a/steampunk_squirrel-horse_hstack.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="squirrel3Merge"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vid-prompt-4" style="width: 21%; padding: 5px 0 15px 0;"> A <span class="text-old">squirrel wearing a leather jacket</span> riding a <span class="text-old">motorcycle</span>. </div>
+                <div class="vid-prompt-4" style="width: 4%;"></div>
+                <div class="vid-prompt-4"> A <span class="text-new">bunny</span> riding a <span class="text-new">scooter</span>. </div>
+                <div class="vid-prompt-4"> A <span class="text-new">fairy</span> riding a <span class="text-new">bike</span>. </div>
+                <div class="vid-prompt-4"> A <span class="text-new">steampunk squirrel</span> riding a <span class="text-new">horse</span>. </div>
+            </div>
+            <div class="row">
+                <div class="column-4" style="width: 21%;">
+                    <video class="vid-rgb all-center" id="bunny-in" loop muted autoplay style="width: 70%; margin: auto;"> <source src="assets/prompt-based/bunny-rgb.mp4" type="video/mp4"> </video>
+                </div>
+                <div class="column-4" style="width: 4%;">
+                    <img class="all-center" src="images/arrow.png" style="width: 100%;">
+                </div>
+                <div class="column-4">
+                    <div class="video-compare-container">
+                        <video class="video" id="bunny1" loop autoplay muted src="assets/prompt-based/bunny-256x256-a/lego_bunny-a_stack_of_books_hstack.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="bunny1Merge"></canvas>
+                    </div>
+                </div>
+                <div class="column-4">
+                    <div class="video-compare-container">
+                        <video class="video" id="bunny2" loop autoplay muted src="assets/prompt-based/bunny-256x256-a/metal_bunny-a_stack_of_broccoli_hstack.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="bunny2Merge"></canvas>
+                    </div>
+                </div>
+                <div class="column-4">
+                    <div class="video-compare-container">
+                        <video class="video" id="bunny3" loop autoplay muted src="assets/prompt-based/bunny-256x256-a/metal_bunny-_hstack.mp4" onplay="resizeAndPlay(this)"></video>
+                        <canvas height=0 class="videoMerge" id="bunny3Merge"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vid-prompt-4" style="width: 21%; padding: 5px 0 15px 0;"> A <span class="text-old">baby bunny</span> sitting on top of a stack of <span class="text-old">pancakes</span>. </div>
+                <div class="vid-prompt-4" style="width: 4%;"></div>
+                <div class="vid-prompt-4"> A <span class="text-new">lego bunny</span> sitting on top of a stack of <span class="text-new">books</span>. </div>
+                <div class="vid-prompt-4"> A <span class="text-new">metal bunny</span> sitting on top of a stack of <span class="text-new">broccoli</span>. </div>
+                <div class="vid-prompt-4"> A <span class="text-new">metal bunny</span> sitting on top of a stack of <span class="text-new">chocolate cookies</span>. </div>
+            </div>
+        </div>
+
+        <!-- 3D Dreambooth -->
+        <hr>
+        <h5>Other Editing Capbilities</h5>
+        <div class="container">
+            <p>
+                Given input images for a subject instance, we can fine-tune the diffusion models with <a href="https://dreambooth.github.io/">DreamBooth</a> and optimize the 3D models with the given prompts.
+                The identity of the subject can be well-preserved in the 3D models.
+            </p>
+            <div class="row">
+                <div class="column-2" style="text-align: center;">
+                    <img src="assets/dreambooth/static1.png" style="width: 90%;">
+                </div>
+                <div class="column-2" style="text-align: center;">
+                    <img src="assets/dreambooth/static2.png" style="width: 90%;">
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="column-4">
+                    <img src="assets/dreambooth/input_cat.png" style="width: 100%;">
+                </div>
+                <div class="column-4">
+                    <video id="dreambooth1" loop muted autoplay style="width: 100%;"> <source src="assets/dreambooth/cat_bike2_rgb-a.mp4" type="video/mp4"> </video>
+                </div>
+                <div class="column-4">
+                    <img src="assets/dreambooth/input_dog.png" style="width: 100%">
+                </div>
+                <div class="column-4">
+                    <video id="dreambooth1" loop muted autoplay style="width: 100%;"> <source src="assets/dreambooth/dog_run_rgb-a.mp4" type="video/mp4"> </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vid-prompt-4"> (input images) </div>
+                <div class="vid-prompt-4"> A <b>[V]</b> cat riding a bike. </div>
+                <div class="vid-prompt-4"> (input images) </div>
+                <div class="vid-prompt-4"> A <b>[V]</b> dog running down the track. </div>
+            </div> -->
+        </div>
+        <div class="container">
+            <p style="margin-top: 10px;">
+                We can also condition the diffusion model (eDiff-I) on an input image to transfer its style to the output 3D model.
+                <!-- The style of the reference image can be transferred to the 3D model by providing it to the diffusion model as conditional input. -->
+                <!-- We apply different styles during 3D synthesis with two different text prompts. -->
+            </p>
+            <div style="text-align: center;">
+                <img src="assets/style_transfer-a.png" style="width: 78%;">
+            </div>
+        </div>
+
+        <!-- Method -->
+        <hr>
+        <h5>Method</h5>
+        <div class="container">
+            <p>
+                We utilize a two-stage coarse-to-fine optimization framework for fast and high-quality text-to-3D content creation.
+                In the first stage, we obtain a coarse model using a low-resolution diffusion prior and accelerate this with a hash grid and sparse acceleration structure.
+                In the second stage, we use a textured mesh model initialized from the coarse neural representation, allowing optimization with an efficient differentiable renderer interacting with a high-resolution latent diffusion model.
+            </p>
+            <div class="row">
+                <img src="assets/diagram.jpg" style="width: 100%;">
             </div>
         </div>
 
         <!-- Citation. -->
-        <hr style="max-width: 768px;">
-        <div class="container" style="max-width: 768px;">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Citation</h2>
-                </div>
-            </div>
-            <div class="code-box-copy" style="font-size: 0.9rem !important; max-width: 768px; margin: 0 auto;">
-                <button class="code-box-copy__btn" data-clipboard-target="#citation" title="Copy"
-                    style="opacity: 1;"></button>
-                <pre><code class="language-bib" style="font-size: 0.9rem;" id="citation">@article{balaji2022eDiff-I,
-    title={eDiff-I: Text-to-Image Diffusion Models with Ensemble of Expert Denoisers},
-    author={Yogesh Balaji and Seungjun Nah and Xun Huang and Arash Vahdat and Jiaming Song and Karsten Kreis and Miika Aittala and Timo Aila and Samuli Laine and Bryan Catanzaro and Tero Karras and Ming-Yu Liu},
-    journal={arXiv preprint arXiv:2211.01324},
-    year={2022}
-                    </code></pre>
+        <hr>
+        <h5>Citation</h5>
+        <div class="container">
+            <div id="citation">
+                @article{lin2022magic3d,<br>
+                  &nbsp;&nbsp;title={Magic3D: High-Resolution Text-to-3D Content Creation},<br>
+                  &nbsp;&nbsp;author={Chen-Hsuan Lin and Jun Gao and Luming Tang and Towaki Takikawa and Xiaohui Zeng and Xun Huang and Karsten Kreis and Sanja Fidler and Ming-Yu Liu and Tsung-Yi Lin},<br>
+                  &nbsp;&nbsp;journal={arXiv preprint <span style="color: red">arXiv:2211.abcde</span>},<br>
+                  &nbsp;&nbsp;year={2022}<br>
+                }
             </div>
         </div>
+
     </div>
 
 
@@ -391,6 +422,67 @@
             </p>
         </div>
     </footer>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery.sooperfish.js"></script> -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // $("video").each(function(){ $(this)[0].play() });
+        });
+
+        // for (var i = 0; i < 12; i++) {
+        //     let id_rgb = "#mesh" + (i+1) + "-rgb";
+        //     let id_normal = "#mesh" + (i+1) + "-normal";
+        //     let rgb = document.getElementById(id_rgb);
+        //     let normal = document.getElementById(id_normal);
+        //     rgb.children[0].src = "assets/main/rgb-320x320/" + idx[i] + ".mp4"
+        // }
+
+        vid_normal = document.getElementsByClassName("vid-normal");
+        for (var i = 0; i < vid_normal.length; i++) {
+            let id_normal = vid_normal[i].id;
+            let id_rgb = id_normal.substring(0, id_normal.length-7) + "-rgb";
+            let id_model = id_normal.substring(0, id_normal.length-7) + "-model";
+            let normal = document.getElementById(id_normal);
+            let rgb = document.getElementById(id_rgb);
+            let model = document.getElementById(id_model);
+            $("#"+id_normal).hover(
+                function(){
+                    normal.currentTime = rgb.currentTime;
+                    normal.style.transition = "opacity 0.5s";
+                    normal.style.opacity = 1;
+                }, function(){
+                    normal.currentTime = rgb.currentTime;
+                    normal.style.opacity = 0;
+                }
+            );
+            document.querySelector("#"+id_normal).addEventListener("ended", function(){
+                this.play();
+            })
+            document.querySelector("#"+id_rgb).addEventListener("ended", function(){
+                // normal.currentTime = rgb.currentTime;
+                this.play();
+            })
+            // window.setInterval(function(){
+            //     normal.currentTime = rgb.currentTime;
+            // }, 1000);
+        }
+
+        vid_text = document.getElementsByClassName("vid-prompt-3");
+        for (var i = 0; i < vid_text.length; i++) {
+            let id = vid_text[i].id;
+            let id_base = id.substring(0, id.length-5);
+            let text = document.getElementById(id);
+            let canvas = document.getElementById(id_base+"Merge");
+            let model = document.getElementById(id_base+"-model");
+            text.onclick = function(){
+                canvas.style.display = "none";
+                model.style.display = "block";
+            }
+        }
+
+    </script>
 
 </body>
 
