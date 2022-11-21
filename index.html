@@ -75,8 +75,8 @@
             </div>
 
             <div class="buttons">
-                <a href="" target="_blank" class="btn btn-primary my-2">Paper (arXiv)</a>
-                <a href="" target="_blank" class="btn btn-primary my-2">Video</a>
+                <a href="https://arxiv.org/abs/2211.10440" target="_blank" class="btn btn-primary my-2">Paper (arXiv)</a>
+                <!-- <a href="" target="_blank" class="btn btn-primary my-2">Video</a> -->
             </div>
 
             <div class="container">
@@ -111,12 +111,12 @@
             <p>
                 Magic3D can create high-quality 3D textured mesh models from input text prompts.
                 It utilizes a coarse-to-fine strategy that leverages both low- and highresolution diffusion priors for learning the 3D representation of the target content.
-                Magic3D synthesizes 3D content with 8× higher-resolution supervision than DreamFusion while also being 2× faster.
+                Magic3D synthesizes 3D content with 8× higher-resolution supervision than <a href="http://dreamfusion3d.github.io/">DreamFusion</a> while also being 2× faster.
             </p>
             <p style="text-align: center; font-size: 90%; line-height: 1.25em;">
                 <b>[...]</b> indicates helper captions added to improve quality, e.g. "A DSLR photo of".<br>
                 Videos are best viewed with Google Chrome.<br>
-                <b>Click on the text prompts to reveal the 3D meshes!</b>
+                <b style="color: #D00; font-size: 110%;">Click on the text prompts to reveal the 3D meshes!</b>
             </p>
 
             <div class="row">
@@ -338,7 +338,7 @@
 
         <!-- 3D Dreambooth -->
         <hr>
-        <h5>Other Editing Capbilities</h5>
+        <h5>Other Editing Capabilities</h5>
         <div class="container">
             <p>
                 Given input images for a subject instance, we can fine-tune the diffusion models with <a href="https://dreambooth.github.io/">DreamBooth</a> and optimize the 3D models with the given prompts.
@@ -406,7 +406,7 @@
                 @article{lin2022magic3d,<br>
                   &nbsp;&nbsp;title={Magic3D: High-Resolution Text-to-3D Content Creation},<br>
                   &nbsp;&nbsp;author={Chen-Hsuan Lin and Jun Gao and Luming Tang and Towaki Takikawa and Xiaohui Zeng and Xun Huang and Karsten Kreis and Sanja Fidler and Ming-Yu Liu and Tsung-Yi Lin},<br>
-                  &nbsp;&nbsp;journal={arXiv preprint <span style="color: red">arXiv:2211.abcde</span>},<br>
+                  &nbsp;&nbsp;journal={arXiv preprint arXiv:2211.10440},<br>
                   &nbsp;&nbsp;year={2022}<br>
                 }
             </div>
@@ -483,6 +483,24 @@
         }
 
     </script>
+
+    <!-- Default Statcounter code for Magic3D
+    https://deepimagination.cc/Magic3D/ -->
+    <script type="text/javascript">
+    var sc_project=12819112; 
+    var sc_invisible=1; 
+    var sc_security="71c1464a"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics"
+    href="https://statcounter.com/" target="_blank"><img
+    class="statcounter"
+    src="https://c.statcounter.com/12819112/0/71c1464a/1/"
+    alt="Web Analytics"
+    referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+    <!-- End of Statcounter Code -->
 
 </body>
 
