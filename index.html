@@ -116,11 +116,11 @@
             <p style="text-align: center; font-size: 90%; line-height: 1.25em;">
                 <b>[...]</b> indicates helper captions added to improve quality, e.g. "A DSLR photo of".<br>
                 Videos are best viewed with Google Chrome.<br>
-                <b style="color: #D00; font-size: 110%;">Click on the text prompts to reveal the 3D meshes!</b>
             </p>
 
             <div class="row">
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh1-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh1" loop autoplay muted src="assets/main/hstack-320x320/005.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh1Merge"></canvas>
@@ -128,6 +128,7 @@
                     <model-viewer id="mesh1-model" src="assets/selected_glb_files/005.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh2-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh2" loop autoplay muted src="assets/main/hstack-320x320/009.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh2Merge"></canvas>
@@ -135,6 +136,7 @@
                     <model-viewer id="mesh2-model" src="assets/selected_glb_files/009.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh3-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh3" loop autoplay muted src="assets/main/hstack-320x320/048.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh3Merge"></canvas>
@@ -149,6 +151,7 @@
             </div>
             <div class="row">
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh4-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh4" loop autoplay muted src="assets/main/hstack-320x320/034.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh4Merge"></canvas>
@@ -156,6 +159,7 @@
                     <model-viewer id="mesh4-model" src="assets/selected_glb_files/034.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh5-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh5" loop autoplay muted src="assets/main/hstack-320x320/115.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh5Merge"></canvas>
@@ -163,6 +167,7 @@
                     <model-viewer id="mesh5-model" src="assets/selected_glb_files/115.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh6-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh6" loop autoplay muted src="assets/main/hstack-320x320/130.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh6Merge"></canvas>
@@ -177,6 +182,7 @@
             </div>
             <div class="row">
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh7-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh7" loop autoplay muted src="assets/main/hstack-320x320/137.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh7Merge"></canvas>
@@ -184,6 +190,7 @@
                     <model-viewer id="mesh7-model" src="assets/selected_glb_files/137.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh8-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh8" loop autoplay muted src="assets/main/hstack-320x320/210.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh8Merge"></canvas>
@@ -191,6 +198,7 @@
                     <model-viewer id="mesh8-model" src="assets/selected_glb_files/210.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh9-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh9" loop autoplay muted src="assets/main/hstack-320x320/211.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh9Merge"></canvas>
@@ -205,6 +213,7 @@
             </div>
             <div class="row">
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh10-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh10" loop autoplay muted src="assets/main/hstack-320x320/212.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh10Merge"></canvas>
@@ -212,6 +221,7 @@
                     <model-viewer id="mesh10-model" src="assets/selected_glb_files/212.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh11-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh11" loop autoplay muted src="assets/main/hstack-320x320/276.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh11Merge"></canvas>
@@ -219,6 +229,7 @@
                     <model-viewer id="mesh11-model" src="assets/selected_glb_files/276.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh12-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh12" loop autoplay muted src="assets/main/hstack-320x320/279.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh12Merge"></canvas>
@@ -233,6 +244,7 @@
             </div>
             <div class="row">
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh13-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh13" loop autoplay muted src="assets/main/hstack-320x320/387.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh13Merge"></canvas>
@@ -240,6 +252,7 @@
                     <model-viewer id="mesh13-model" src="assets/selected_glb_files/387.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh14-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh14" loop autoplay muted src="assets/main/hstack-320x320/400.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh14Merge"></canvas>
@@ -247,6 +260,7 @@
                     <model-viewer id="mesh14-model" src="assets/selected_glb_files/400.glb" ar shadow-intensity="1" camera-controls touch-action="pan-y" style="height: 290px; width: 290px; display: none;"></model-viewer>
                 </div>
                 <div class="column-3">
+                    <div class="mesh-button" id="mesh15-button"> <a class="btn btn-primary my-2">Reveal<br>3D mesh!</a> </div>
                     <div class="video-compare-container">
                         <video class="video" id="mesh15" loop autoplay muted src="assets/main/hstack-320x320/405.mp4" onplay="resizeAndPlay(this)"></video>
                         <canvas height=0 class="videoMerge" id="mesh15Merge"></canvas>
@@ -469,15 +483,16 @@
             // }, 1000);
         }
 
-        vid_text = document.getElementsByClassName("vid-prompt-3");
-        for (var i = 0; i < vid_text.length; i++) {
-            let id = vid_text[i].id;
-            let id_base = id.substring(0, id.length-5);
-            let text = document.getElementById(id);
+        vid_button = document.getElementsByClassName("mesh-button");
+        for (var i = 0; i < vid_button.length; i++) {
+            let id = vid_button[i].id;
+            let id_base = id.substring(0, id.length-7);
+            let button = document.getElementById(id);
             let canvas = document.getElementById(id_base+"Merge");
             let model = document.getElementById(id_base+"-model");
-            text.onclick = function(){
+            button.onclick = function(){
                 canvas.style.display = "none";
+                button.style.display = "none";
                 model.style.display = "block";
             }
         }
