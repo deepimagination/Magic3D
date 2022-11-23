@@ -197,6 +197,14 @@ h9 {
     padding: 0 0 0 20px;
     color: #fff;
 }
+.mesh-button2 {
+    width: 10%;
+    position: absolute;
+    z-index: 20;
+    padding: 0 0 0 20px;
+    color: #fff;
+    display: none;
+}
 .column-3 .btn-primary {
     font-size: 80%;
     line-height: 1.1em;
