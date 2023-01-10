@@ -381,32 +381,10 @@
                     <img src="assets/dreambooth/static2.png" style="width: 90%;">
                 </div>
             </div>
-            <!-- <div class="row">
-                <div class="column-4">
-                    <img src="assets/dreambooth/input_cat.png" style="width: 100%;">
-                </div>
-                <div class="column-4">
-                    <video id="dreambooth1" loop muted autoplay style="width: 100%;"> <source src="assets/dreambooth/cat_bike2_rgb-a.mp4" type="video/mp4"> </video>
-                </div>
-                <div class="column-4">
-                    <img src="assets/dreambooth/input_dog.png" style="width: 100%">
-                </div>
-                <div class="column-4">
-                    <video id="dreambooth1" loop muted autoplay style="width: 100%;"> <source src="assets/dreambooth/dog_run_rgb-a.mp4" type="video/mp4"> </video>
-                </div>
-            </div>
-            <div class="row">
-                <div class="vid-prompt-4"> (input images) </div>
-                <div class="vid-prompt-4"> A <b>[V]</b> cat riding a bike. </div>
-                <div class="vid-prompt-4"> (input images) </div>
-                <div class="vid-prompt-4"> A <b>[V]</b> dog running down the track. </div>
-            </div> -->
         </div>
         <div class="container">
             <p style="margin-top: 10px;">
                 We can also condition the diffusion model (eDiff-I) on an input image to transfer its style to the output 3D model.
-                <!-- The style of the reference image can be transferred to the 3D model by providing it to the diffusion model as conditional input. -->
-                <!-- We apply different styles during 3D synthesis with two different text prompts. -->
             </p>
             <div style="text-align: center;">
                 <img src="assets/style_transfer-a.png" style="width: 78%;">
@@ -434,7 +412,7 @@
             <div id="citation">
                 @article{lin2022magic3d,<br>
                   &nbsp;&nbsp;title={Magic3D: High-Resolution Text-to-3D Content Creation},<br>
-                  &nbsp;&nbsp;author={Chen-Hsuan Lin and Jun Gao and Luming Tang and Towaki Takikawa and Xiaohui Zeng and Xun Huang and Karsten Kreis and Sanja Fidler and Ming-Yu Liu and Tsung-Yi Lin},<br>
+                  &nbsp;&nbsp;author={Lin, Chen-Hsuan and Gao, Jun and Tang, Luming and Takikawa, Towaki and Zeng, Xiaohui and Huang, Xun and Kreis, Karsten and Fidler, Sanja and Liu, Ming-Yu and Lin, Tsung-Yi},<br>
                   &nbsp;&nbsp;journal={arXiv preprint arXiv:2211.10440},<br>
                   &nbsp;&nbsp;year={2022}<br>
                 }
@@ -456,18 +434,6 @@
     <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
     <!-- <script type="text/javascript" src="js/jquery.sooperfish.js"></script> -->
     <script type="text/javascript">
-        $(document).ready(function(){
-            // $("video").each(function(){ $(this)[0].play() });
-        });
-
-        // for (var i = 0; i < 12; i++) {
-        //     let id_rgb = "#mesh" + (i+1) + "-rgb";
-        //     let id_normal = "#mesh" + (i+1) + "-normal";
-        //     let rgb = document.getElementById(id_rgb);
-        //     let normal = document.getElementById(id_normal);
-        //     rgb.children[0].src = "assets/main/rgb-320x320/" + idx[i] + ".mp4"
-        // }
-
         vid_normal = document.getElementsByClassName("vid-normal");
         for (var i = 0; i < vid_normal.length; i++) {
             let id_normal = vid_normal[i].id;
@@ -490,12 +456,8 @@
                 this.play();
             })
             document.querySelector("#"+id_rgb).addEventListener("ended", function(){
-                // normal.currentTime = rgb.currentTime;
                 this.play();
             })
-            // window.setInterval(function(){
-            //     normal.currentTime = rgb.currentTime;
-            // }, 1000);
         }
 
         vid_button = document.getElementsByClassName("mesh-button");
